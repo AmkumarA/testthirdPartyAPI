@@ -2,6 +2,7 @@ const { TwitterApi } = require('twitter-api-v2');
 
 exports.twitterLogin = async (req, res) => {
     try {
+
         const client = new TwitterApi({
             appKey: process.env.TWITTER_CONSUMER_KEY,
             appSecret: process.env.TWITTER_CONSUMER_SECRET,
@@ -17,7 +18,7 @@ exports.twitterLogin = async (req, res) => {
         res.redirect(url);
     } catch (err) {
         console.error('Login error:', err);
-        res.status(500).send('Twitter login failed');
+        res.status(500).send('Twitter login failed login');
     }
 };
 
