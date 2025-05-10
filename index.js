@@ -7,7 +7,13 @@ const port = 3000;
 // Step 1: Configure OAuth2
 
 
-app.use('/', youtubeRoutes);
+const path = require('path');
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.use('/api/facebook', facebookRoutes);
 
 app.listen(port, () => {
