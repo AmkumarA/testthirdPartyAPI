@@ -2,6 +2,7 @@
 const express = require('express');
 const youtubeRoutes = require('./routes/youtube.routes');
 const facebookRoutes = require('./routes/facebook.routes');
+const twitterRoutes = require('./routes/twitter.routes')
 const app = express();
 const port = 3000;
 // Step 1: Configure OAuth2
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/facebook', facebookRoutes);
+app.use('/api/twitter', twitterRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
