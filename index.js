@@ -7,7 +7,7 @@ const port = 3000;
 // Step 1: Configure OAuth2
 
 
-app.use('/cheksubscribe', youtubeRoutes);
+app.use('/', youtubeRoutes);
 app.use('/api/facebook', facebookRoutes);
 
 app.listen(port, () => {
