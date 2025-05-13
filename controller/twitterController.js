@@ -24,8 +24,9 @@ exports.twitterLogin = async (req, res) => {
 
 exports.twitterCallback = async (req, res) => {
     const { oauth_token, oauth_verifier } = req.query;
-
-    if (!oauth_token || !oauth_verifier || !req.session.oauth_token) {
+    const access_token = '1921139152718098432-vetuz2vIImzq7EWOXpwNSBhLaNbMz9'
+    const access_secret = 'Omfn7piBZ4AtIdSHmLJm8yFGsvIi78OOe9nQQ5aDiBXiq'
+    if (!oauth_token || !oauth_verifier || !access_token) {
         return res.status(400).send('Missing or expired session/token');
     }
 
@@ -33,8 +34,8 @@ exports.twitterCallback = async (req, res) => {
         const client = new TwitterApi({
             appKey: process.env.TWITTER_CONSUMER_KEY,
             appSecret: process.env.TWITTER_CONSUMER_SECRET,
-            accessToken: req.session.oauth_token,
-            accessSecret: req.session.oauth_token_secret,
+            accessToken: access_token,
+            accessSecret: access_secret,
         });
 
         const { client: loggedClient } = await client.login(oauth_verifier);
