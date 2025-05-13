@@ -13,9 +13,10 @@ const path = require('path');
 app.use(express.static('public'));
 // twitter session
 app.use(session({
-    secret: 'twitter_secret',
+    secret: 'amkumarA',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: false } // for localhost only; use `true` in production with HTTPS
 }));
 
 app.get('/', (req, res) => {
