@@ -24,7 +24,7 @@ exports.twitterLogin = async (req, res) => {
 
 exports.twitterCallback = async (req, res) => {
     const { oauth_token, oauth_verifier } = req.query;
-
+    console.log("00000\n\n", req.session)
     if (!oauth_token || !oauth_verifier) {
         return res.status(400).send("Missing oauth_token or oauth_verifier");
     }
