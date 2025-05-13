@@ -25,6 +25,10 @@ exports.twitterLogin = async (req, res) => {
 exports.twitterCallback = async (req, res) => {
     const { oauth_token, oauth_verifier } = req.query;
 
+    if (!oauth_token || !oauth_verifier) {
+        return res.status(400).send("Missing oauth_token or oauth_verifier");
+    }
+
     try {
         const client = new TwitterApi({
             appKey: process.env.TWITTER_CONSUMER_KEY,
@@ -46,6 +50,7 @@ exports.twitterCallback = async (req, res) => {
         }
     } catch (err) {
         console.error('Callback error:', err);
-        res.status(500).send('Twitter callback failed');
+        res.status(500).send(err?.data?.detail || 'Twitter callback failed');
     }
 };
+
