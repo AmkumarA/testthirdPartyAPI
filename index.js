@@ -2,7 +2,7 @@
 const express = require('express');
 const youtubeRoutes = require('./routes/youtube.routes');
 const facebookRoutes = require('./routes/facebook.routes');
-const twitterRoutes = require('./routes/twitter.routes');
+
 const session = require('express-session');
 const app = express();
 const port = 3000;
@@ -18,7 +18,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: { secure: false } // for localhost only; use `true` in production with HTTPS
 }));
-
+const twitterRoutes = require('./routes/twitter.routes');
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
